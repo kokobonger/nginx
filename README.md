@@ -22,3 +22,4 @@ En conclusion,  Apache destaca por su flexibilidad y compatibilidad, mientras qu
 ### Esquema de Red
 A continuacion un dibujo del esquema de red que crearemos como ejemplo practico
 
+![Imagen 1](https://github.com/kokobonger/nginx/blob/main/Esquema%20de%20red.png)
