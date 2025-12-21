@@ -76,7 +76,7 @@ Ahora debemos crear y editar dos ficheros para permitir o denegar el acceso a la
   ![Imagen13](https://github.com/kokobonger/nginx/blob/main/Contenido%201%20de%20web2.png)
 
 Una vez hecho todo esto, debemos activar los sitios asi:
-- **sudo /etc/nginx/sites-available/web1 /etc/nginx/sites-enabled/**
+- **sudo ln -s /etc/nginx/sites-available/web1 /etc/nginx/sites-enabled/**
   
 - **sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enabled/**
 
@@ -136,7 +136,16 @@ Aqui adjunto la comprobacion realizada de las dos paginas desde los dos clientes
 Como podemos observar el cliente externo no tiene permitido acceder a la web2 ya que lo hemos configurado asi.
 
 ### Solicitud de autenticacion
-Ahora configuraremos la **Web1** para que solicite una autenticacion al cliente para que solo los que conozcan el usuario y contraseña puedan acceder, para ello crearemos un usuario el cual tendra acceso a la web y con el intentaremos acceder, hay que tener en cuenta que solo le pedira autenticarse a los clientes que se conecten desde el exterior de la red, a los clientes dentro de la red interna les dejara acceder sin autenticacion necesaria
+Ahora configuraremos un directorio en la **Web1** que solicite una autenticacion al cliente para que solo los que conozcan el usuario y contraseña puedan acceder a ese directorio, para ello crearemos el directorio y un usuario el cual tendra acceso al directorio dentro de la web1 y con el intentaremos acceder, hay que tener en cuenta que solo le pedira autenticarse a los clientes que se conecten desde el exterior de la red, a los clientes dentro de la red interna les dejara acceder sin autenticacion necesaria.
+Aqui muestro los comandos necesarios en orden:
 
-### Creacion de usuario
-Para crear un usuario directamente para que tenga acceso debemos ejecutar este comando:
+Creamos el sitio:
+- **sudo mkdir /var/www/web1/privado**
+Instalamos las utilidades de apache2:
+- **sudo apt install apache2-utils -y**
+
+Creacion de usuario: Para crear un usuario directamente para que tenga acceso debemos ejecutar este comando:
+- **sudo htpasswd -c /etc/nginx/.htpasswd fernando**
+(Debemos poner una contraseña para el usuario)
+
+![Imagen14](https://github.com/kokobonger/nginx/blob/main/creacion%20usuario%20autenticacion.png)
