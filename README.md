@@ -181,4 +181,8 @@ Una vez puestas me deja acceder
 ### Cliente interno
 
 Nos la da directamente sin necesidad de autenticarse
-![Imagen19]()
+![Imagen19](https://github.com/kokobonger/nginx/blob/main/cliente%20interno%20zona%20privada.png)
+
+
+
+# FIN
