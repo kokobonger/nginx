@@ -66,12 +66,14 @@ Ahora debemos crear y editar dos ficheros para permitir o denegar el acceso a la
 
 - **sudo nano /etc/nginx/sites-available/web1**
   Dentro de este fichero debemos poner lo siguiente para permitir el acceso a todos los clientes
-  ![Imagen12]()
+  
+  ![Imagen12](https://github.com/kokobonger/nginx/blob/main/Contenido%201%20de%20web1.png)
   
 - **sudo nano /etc/nginx/sites-available/web2**
   Dentro de este fichero debemos poner lo siguiente para permitir el acceso solo a los clientes de la
   red interna y denegar el acceso desde la red externa
-  ![Imagen13]()
+  
+  ![Imagen13](https://github.com/kokobonger/nginx/blob/main/Contenido%201%20de%20web2.png)
 
 Una vez hecho todo esto, realizamos de nuevo las comprobaciones de sintaxis
 - **sudo nginx -t**
