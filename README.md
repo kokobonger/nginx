@@ -1,5 +1,5 @@
 # Tarea 4 HTTP
-## Fernando Nunez Liger
+## Fernando Nunez
 
 ### Introduccion
 En este fichero readme veremos como instalar y configurar una pagina web con nginx en linux
