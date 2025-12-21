@@ -92,16 +92,20 @@ Aqui adjunto la comprobacion realizada de las dos paginas desde los dos clientes
 ### Cliente Interno
 
 **Web1**
+
 ![Imagen8](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta%20cliente%20interno.png)
 **Web2**
+
 ![Imagen9](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta%20cliente%20interno%202.png)
 
 ### Cliente Externo
 
 **Web1**
+
 ![Imagen10](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta%20cliente%20externo.png)
 
 **Web2**
+
 ![Imagen11](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta%20cliente%20externo%202.png)
 
 Como podemos observar el cliente externo no tiene permitido acceder a la web2 ya que lo hemos puesto asi
