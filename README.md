@@ -60,6 +60,21 @@ Una vez creados con exito los dos directorios procederemos a crear el index de l
 Ahora comprobaremos que esta bien escrito poniendo el siguiente comando
 - **sudo nginx -t**
 Si todo esta correcto nos devolvera un **"syntax is OK"**, si no debemos buscar que error hemos cometido
+
+### Creacion de virtualhost
+Ahora debemos crear y editar dos ficheros para permitir o denegar el acceso a las paginas, para ello realizaremos lo siguiente:
+
+- **sudo nano /etc/nginx/sites-available/web1**
+  Dentro de este fichero debemos poner lo siguiente para permitir el acceso a todos los clientes
+  ![Imagen12]()
+  
+- **sudo nano /etc/nginx/sites-available/web2**
+  Dentro de este fichero debemos poner lo siguiente para permitir el acceso solo a los clientes de la
+  red interna y denegar el acceso desde la red externa
+  ![Imagen13]()
+
+Una vez hecho todo esto, realizamos de nuevo las comprobaciones de sintaxis
+- **sudo nginx -t**
 Una vez confirmado su syntaxis correcta recargamos el servicio
 - **sudo systemctl reload nginx**
 ![Imagen6](https://github.com/kokobonger/nginx/blob/main/comprobacion%20y%20reinicio%20del%20servicio.png)
