@@ -20,7 +20,7 @@ NGINX, en cambio, utiliza una arquitectura basada en eventos que le permite mane
 En conclusion,  Apache destaca por su flexibilidad y compatibilidad, mientras que NGINX sobresale por su rendimiento y eficiencia.
 
 ### Esquema de Red
-A continuacion un dibujo del esquema de red que crearemos como ejemplo practico
+A continuacion un dibujo del esquema de red que crearemos como ejemplo practico:
 
 ![Imagen 1](https://github.com/kokobonger/nginx/blob/main/Esquema%20de%20red.png)
 
@@ -30,13 +30,13 @@ Para instalarlo debemos realizar el siguiente procedimiento paso a paso:
 
 - **sudo apt update**
 - **sudo apt install nginx -y**
-Una vez realizado estos dos comandos comprobaremos el estado y la version del servicio ejecutando los siguientes comandos
+Una vez realizado estos dos comandos comprobaremos el estado y la version del servicio ejecutando los siguientes comandos:
 
 - **sduo systemctl status nginx**
 - **nginx -v**
 ![Imagen2](https://github.com/kokobonger/nginx/blob/main/Estado%20de%20servicio.png)
 
-Ahora procederemos a lacreacion de los directorios de ejemplo
+Ahora procederemos a lacreacion de los directorios de ejemplo:
 
 - **sudo mkdir -p /var/www/web1**
 - **sudo mkdir -p /var/www/web2**
@@ -46,7 +46,7 @@ Y comprobaremos que se han creado con exito
 - **ls /var/www/**
 ![imagen3](https://github.com/kokobonger/nginx/blob/main/confirmacion%20directorios%20creados.png)
 
-Una vez creados con exito los dos directorios procederemos a crear el index de las web de ejemplo
+Una vez creados con exito los dos directorios procederemos a crear el index de las web de ejemplo:
 
 - **sudo nano /var/www/web1/index.html**
   Dento ponemos lo que queramos que contenga nuestro index, en mi caso esto:
@@ -57,33 +57,41 @@ Una vez creados con exito los dos directorios procederemos a crear el index de l
 
 ***Debemos guardar haciendo "CTRL + O" y salir haciendo "CTRL + X" en todos los ficheros que editaremos o crearemos***
 
-Ahora comprobaremos que esta bien escrito poniendo el siguiente comando
+Ahora comprobaremos que esta bien escrito poniendo el siguiente comando:
 - **sudo nginx -t**
-Si todo esta correcto nos devolvera un **"syntax is OK"**, si no debemos buscar que error hemos cometido
+Si todo esta correcto nos devolvera un **"syntax is OK"**, si no debemos buscar que error hemos cometido.
 
 ### Creacion de virtualhost
 Ahora debemos crear y editar dos ficheros para permitir o denegar el acceso a las paginas, para ello realizaremos lo siguiente:
 
 - **sudo nano /etc/nginx/sites-available/web1**
-  Dentro de este fichero debemos poner lo siguiente para permitir el acceso a todos los clientes
+  Dentro de este fichero debemos poner lo siguiente para permitir el acceso a todos los clientes.
   
   ![Imagen12](https://github.com/kokobonger/nginx/blob/main/Contenido%201%20de%20web1.png)
   
 - **sudo nano /etc/nginx/sites-available/web2**
   Dentro de este fichero debemos poner lo siguiente para permitir el acceso solo a los clientes de la
-  red interna y denegar el acceso desde la red externa
+  red interna y denegar el acceso desde la red externa.
   
   ![Imagen13](https://github.com/kokobonger/nginx/blob/main/Contenido%201%20de%20web2.png)
 
-Una vez hecho todo esto, realizamos de nuevo las comprobaciones de sintaxis
+Una vez hecho todo esto, debemos activar los sitios asi:
+- **sudo /etc/nginx/sites-available/web1 /etc/nginx/sites-enabled/**
+  
+- **sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enabled/**
+
+  Y ahora realizamos una comprobacion de sintaxis:
+  
 - **sudo nginx -t**
-Una vez confirmado su syntaxis correcta recargamos el servicio
+  
+Una vez confirmado su syntaxis correcta recargamos el servicio.
+
 - **sudo systemctl reload nginx**
 ![Imagen6](https://github.com/kokobonger/nginx/blob/main/comprobacion%20y%20reinicio%20del%20servicio.png)
 
 ### Configuracion archivo HOSTS en clientes
 
-Una vez realizado todo lo anterior, nos dirigimos a los clientes y dentro ponemos la direccion IP externa del equipo que aloja el servicio (nota: previamente deben hacer ping al servidor los equipos)
+Una vez realizado todo lo anterior, nos dirigimos a los clientes y dentro ponemos la direccion IP externa del equipo que aloja el servicio (nota: previamente deben hacer ping al servidor los equipos).
 
 Para configurar el archivo, ejecutamos el comando:
 - **sudo nano /etc/hosts**
@@ -92,7 +100,7 @@ Para configurar el archivo, ejecutamos el comando:
       192.168.0.51  www.web1.org
       192.168.0.51  www.web2.org
 
-  Debes sustituir esa ip por la del equipo servidor que tu utilizas, luego debes **TABULAR (TAB)** y      poner el nombre distinguido que tendra tu pagina web, esto en ambos equipos cliente debe ser igual
+  Debes sustituir esa ip por la del equipo servidor que tu utilizas, luego debes **TABULAR (TAB)** y      poner el nombre distinguido que tendra tu pagina web, esto en ambos equipos cliente debe ser igual.
 
 ![Imagen7](https://github.com/kokobonger/nginx/blob/main/contenido%20fichero%20hosts%20en%20clientes.png)
 
@@ -125,4 +133,10 @@ Aqui adjunto la comprobacion realizada de las dos paginas desde los dos clientes
 
 ![Imagen11](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta%20cliente%20externo%202.png)
 
-Como podemos observar el cliente externo no tiene permitido acceder a la web2 ya que lo hemos puesto asi
+Como podemos observar el cliente externo no tiene permitido acceder a la web2 ya que lo hemos configurado asi.
+
+### Solicitud de autenticacion
+Ahora configuraremos la **Web1** para que solicite una autenticacion al cliente para que solo los que conozcan el usuario y contraseña puedan acceder, para ello crearemos un usuario el cual tendra acceso a la web y con el intentaremos acceder, hay que tener en cuenta que solo le pedira autenticarse a los clientes que se conecten desde el exterior de la red, a los clientes dentro de la red interna les dejara acceder sin autenticacion necesaria
+
+### Creacion de usuario
+Para crear un usuario directamente para que tenga acceso debemos ejecutar este comando:
