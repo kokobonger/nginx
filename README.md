@@ -78,3 +78,19 @@ Para configurar el archivo, ejecutamos el comando:
   Debes sustituir esa ip por la del equipo servidor que tu utilizas, luego debes **TABULAR (TAB)** y      poner el nombre distinguido que tendra tu pagina web, esto en ambos equipos cliente debe ser igual
 
 ![Imagen7](https://github.com/kokobonger/nginx/blob/main/contenido%20fichero%20hosts%20en%20clientes.png)
+
+### Comprobacion en clientes
+
+Una vez tengamos todo lo anterior, nos vamos a el navegador que prefiramos y, en una pestaña privada, buscamos el nombre distinguido de nuestra pagina asi:
+
+- **http://192.168.0.51/www.web1.org**
+- **http://192.168.0.51/www.web2.org**
+Sustituyendo la ip y el nombre por los que tengamos
+
+Aqui adjunto la comprobacion realizada de las dos paginas desde los dos clientes:
+
+### Web1 Cliente Interno
+![Imagen8]()
+![Imagen9]()
+![Imagen10]()
+![Imagen11]()
