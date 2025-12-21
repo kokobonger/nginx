@@ -149,3 +149,15 @@ Creacion de usuario: Para crear un usuario directamente para que tenga acceso de
 (Debemos poner una contraseña para el usuario)
 
 ![Imagen14](https://github.com/kokobonger/nginx/blob/main/creacion%20usuario%20autenticacion.png)
+
+### Configurar Nginx
+Ahora debemos añadir lineas a la configuracion del virtualhost de la **web1**: 
+
+- **sudo nano /etc/nginx/sites-available/web1**
+
+Debe quedarnos asi:
+![Imagen15](https://github.com/kokobonger/nginx/blob/main/contenido%20fichero%20configuracion%20de%20web1.png)
+
+Guardamos, cerramos y reiniciamos el servicio
+
+- **sudo systemctl reload nginx**
