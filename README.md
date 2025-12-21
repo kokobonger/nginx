@@ -38,7 +38,7 @@ Una vez realizado estos dos comandos comprobaremos el estado y la version del se
 
 Comprobamos que existe la pagina por defecto de nginx
 
-- **ls **
+- **ls /etc/nginx/sites-available**
   
 ![Imagen16](https://github.com/kokobonger/nginx/blob/main/comprobacion%20de%20instalacion%20correcta.png)
 Ahora procederemos a lacreacion de los directorios de ejemplo:
@@ -166,3 +166,19 @@ Debe quedarnos asi:
 Guardamos, cerramos y reiniciamos el servicio
 
 - **sudo systemctl reload nginx**
+
+Ahora, realizamos las comprobaciones:
+
+### Cliente externo
+
+Podemos observar que me pide credenciales
+![Imagen17](https://github.com/kokobonger/nginx/blob/main/comprobacion%20de%20requisito%20de%20autenticacion.png)
+
+Una vez puestas me deja acceder 
+
+![Imagen18](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta%20cliente%20externo%203.png)
+
+### Cliente interno
+
+Nos la da directamente sin necesidad de autenticarse
+![Imagen19]()
