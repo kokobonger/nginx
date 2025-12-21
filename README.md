@@ -36,6 +36,11 @@ Una vez realizado estos dos comandos comprobaremos el estado y la version del se
 - **nginx -v**
 ![Imagen2](https://github.com/kokobonger/nginx/blob/main/Estado%20de%20servicio.png)
 
+Comprobamos que existe la pagina por defecto de nginx
+
+- **ls **
+  
+![Imagen16](https://github.com/kokobonger/nginx/blob/main/comprobacion%20de%20instalacion%20correcta.png)
 Ahora procederemos a lacreacion de los directorios de ejemplo:
 
 - **sudo mkdir -p /var/www/web1**
