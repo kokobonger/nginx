@@ -183,6 +183,31 @@ Una vez puestas me deja acceder
 Nos la da directamente sin necesidad de autenticarse
 ![Imagen19](https://github.com/kokobonger/nginx/blob/main/cliente%20interno%20zona%20privada.png)
 
+### Creacion de certificado y su clave
 
+Aqui crearemos un certificado para una de nuestras web, en mi caso "www.web1.org" 
+Para ello ejecutamos este comando:
+
+-  **sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/web1.key -out /etc/nginx/ssl/web1.crt**
+
+  ![Imagen20](https://github.com/kokobonger/nginx/blob/main/comando%20para%20certificado.png)
+
+Una vez ejecutado nos pedira unos cuantos datos, lo minimo es dejarlo como la captura de abajo, cambiando lo puesto por lo que tu necesites
+
+![Imagen21](https://github.com/kokobonger/nginx/blob/main/certificado.png)
+  
+Al terminar de dar los datos solicitados, comprobaremos que se han creado con exito tanto el certificado como la clave, para ello ejecutamos este comando:
+
+- **sudo ls -l /etc/nginx/ssl**
+
+![Imagen22](https://github.com/kokobonger/nginx/blob/main/confirmacion%20de%20creacion%20de%20certificado%20y%20clave.png)
+
+Ahora comprobamos su funcionamiento volviendo a entrar a la pagina www.web1.org y que nos salga la siguiente advertencia:
+
+![Imagen23](https://github.com/kokobonger/nginx/blob/main/confirmacion%20de%20creacion%20de%20certificado%20y%20clave.png)
+
+Y aqui pondre tambien la confirmacion tecnica del "common name"
+
+![Imagen24](https://github.com/kokobonger/nginx/blob/main/verificacion%20tecnica.png)
 
 # FIN
