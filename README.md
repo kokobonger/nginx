@@ -210,4 +210,77 @@ Y aqui pondre tambien la confirmacion tecnica del "common name"
 
 ![Imagen24](https://github.com/kokobonger/nginx/blob/main/verificacion%20tecnica.png)
 
+### Redireccion y pagina de mantenimiento
+
+Ahora crearemos una redireccion para que al buscar http://... nos lo redireccione a https://... .
+Para ello haremos los siguientes pasos en orden:
+
+Creamos un nuevo directorio
+
+- **sudo mkdir -p /var/www/mantenimiento**
+
+Creamos dentro el index.html y lo editamos poniendo lo que queramos 
+
+-**sudo nano /var/www/mantenimiento/index.html**
+
+![Imagen25](https://github.com/kokobonger/nginx/blob/main/contenido%20index%20mantenimiento.png)
+
+Ahora cambiamos los permisos del directorio 
+
+- **sudo chown -R www-data:www-data /var/www/mantenimiento**
+- **sudo chmod -R 755 /var/www/mantenimiento**
+
+Ahora creamos el virtualhost:
+
+- **sudo nano /etc/nginx/sites-available/mantenimiento**
+
+Dentro debemos poner esto:
+
+![Imagen26](https://github.com/kokobonger/nginx/blob/main/creacion%20virtual%20host%20mantenimiento.png)
+
+Una vez puesto, guardamos y cerramos y ejecutamos este comando para activar el virtualhost:
+
+- **sudo ln -s /etc/nginx/sites-available/mantenimiento /etc/nginx/sites-enabled/**
+
+![Imagen27](https://github.com/kokobonger/nginx/blob/main/comando%20activar%20virtual%20host%20mantenimiento.png)
+
+Ahora realizaremos el redireccionamiento para que la web1 mande a https, para ello debemos editar el siguiente fichero:
+
+- **sudo nano /etc/nginx/sites-available/web1**
+
+Dentro debemos añadir el primer "server" que aparece en la captura siguiente, y debe quedar asi:
+
+![Imagen28](https://github.com/kokobonger/nginx/blob/main/redireccion%20a%20https.png)
+
+Ahora realizaremos el redireccionamiento de la web2 a la pagina de mantenimiento de la web1:
+
+- **sudo nano /etc/nginx/sites-available/web2**
+
+Y ponemos lo siguiente:
+
+![Imagen29](https://github.com/kokobonger/nginx/blob/main/redireccion%20web2%20a%20mantenimiento.png)
+
+una vez realizado todo esto, verificaremos la correcta sintaxis y reiniciaremos el servicio nginx
+
+- **sudo nginx -t**
+- **sudo systemctl reload nginx**
+
+y verificaremos su estado
+
+- **sudo systemctl status nginx**
+
+![Imagen30](https://github.com/kokobonger/nginx/blob/main/estado%20nginx%20despues%20de%20la%20configuracion.png)
+
+Por ultimo, en un cliente, nos metemos al navegador y buscamos:
+
+- **http://www.web1.org**
+Nos la deberia redireccionar a https
+
+![Imagen31](https://github.com/kokobonger/nginx/blob/main/redireccionamiento%20correcto.png)
+
+ - **http://www.web2.org**
+Nos deberia redireccionar a la pagina web mantenimiento
+
+![Imagen32](https://github.com/kokobonger/nginx/blob/main/redireccionamiento%20web2%20correcto.png)
+
 # FIN
