@@ -283,4 +283,13 @@ Nos deberia redireccionar a la pagina web mantenimiento
 
 ![Imagen32](https://github.com/kokobonger/nginx/blob/main/redireccionamiento%20web2%20correcto.png)
 
+
+#### Explicacion breve 
+
+  **Directivas utilizadas**
+      He utilizado las directivas **return 301, server_name y listen**
+  **¿Porque forzar https?**
+
+  Es mejor forzar ya que protege las credenciales, evita filtraciones o ataques y porque es una buena     practica de seguridad, ya que https cifra todo el trafico mientras que http lo muestra tal cual
+  
 # FIN
