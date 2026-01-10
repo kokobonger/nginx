@@ -286,10 +286,10 @@ Nos deberia redireccionar a la pagina web mantenimiento
 
 #### Explicacion breve 
 
-  **Directivas utilizadas**
+  **Directivas utilizadas:**
       He utilizado las directivas **return 301, server_name y listen**
-  **¿Porque forzar https?**
-
+    
+  **¿Porque forzar https?:**
   Es mejor forzar ya que protege las credenciales, evita filtraciones o ataques y porque es una buena     practica de seguridad, ya que https cifra todo el trafico mientras que http lo muestra tal cual
   
 # FIN
