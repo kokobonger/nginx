@@ -344,17 +344,29 @@ Una vez editados los ficheros crearemos una zona prohibida
 
 - **sudo nano /var/www/web1/prohibido/index.html**
 
+Y le cambiamos los permisos con este comando:
+
+- **sudo chmod 000 /var/www/web1/prohibido**
+
 Y escribimos lo siguiente:
 
-![Imagen38]()
+![Imagen38](https://github.com/kokobonger/nginx/blob/main/index%20de%20zona%20prohibida.png)
 Ahora comprobamos la sintaxis y si esta correcta recargamos el servicio
 
 - **sudo nginx -t**
 
 - **sudo systemctl reload nginx**
 
-Ahora comprobaremos su funcionamiento buscando lo siguiente 
+Ahora comprobaremos su funcionamiento buscando lo siguiente en el navegador de cliente
 
+- **https://www.web1.org/prohibido**
+  Y nos debe salir esto:
 
+  ![Imagen39](https://github.com/kokobonger/nginx/blob/main/Error%20403.png)
+
+- **https://www.web1.org/prohibidoaaa**
+  Y nos debe salir la pagina de error 403 ya que no existe
+
+  ![Imagen40](https://github.com/kokobonger/nginx/blob/main/Error%20404.png)
 
 # FIN
