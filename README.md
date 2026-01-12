@@ -291,5 +291,70 @@ Nos deberia redireccionar a la pagina web mantenimiento
     
   **¿Porque forzar https?:**
   Es mejor forzar ya que protege las credenciales, evita filtraciones o ataques y porque es una buena     practica de seguridad, ya que https cifra todo el trafico mientras que http lo muestra tal cual
-  
+
+
+### Logs personalizados y paginas de error
+
+Aqui crearemos paginas de error personalizadas, en principio solo las de los errores 403 y 404, para ello haremos esto: 
+Creamos el directorio:
+
+- **sudo mkdir -p /var/www/errores**
+
+Creamos el archivo 404 y 403 y ponemos lo que queramos que salga al redireccionar al error, en mi caso:
+
+- **sudo nano /var/www/errores/403.html**
+
+![imagen33](https://github.com/kokobonger/nginx/blob/main/contenido%20error%20403.png)
+
+- **sudo nano /var/www/errores/404.html**
+
+![imagen34](https://github.com/kokobonger/nginx/blob/main/contenido%20error4.png)
+
+Le damos permisos a los archivos 
+
+- **sudo chown -R www-data:www-data /var/www/errores**
+
+- **sudo chmod -R 755 /var/www/errores**
+
+Editar archivo de configuracion nginx.conf
+
+- **sudo nano /etc/nginx/nginx.conf**
+
+Y metemos lo marcado 
+
+![imagen35](https://github.com/kokobonger/nginx/blob/main/Contenido%20archivo%20web2.png)
+
+Editar archivos web1 y web2 y metemos lo siguiente:
+
+En el web1: 
+
+- **sudo nano /etc/nginx/sites-available/web1**
+
+![Imagen36](https://github.com/kokobonger/nginx/blob/main/Contenido%20archivo%20web1.png)
+
+En el web2:
+
+- **sudo nano /etc/nginx/sites-available/web2**
+
+![Imagen37](https://github.com/kokobonger/nginx/blob/main/Contenido%20archivo%20web2.png)
+
+Una vez editados los ficheros crearemos una zona prohibida
+
+- **sudo mkdir /var/www/web1/prohibido**
+
+- **sudo nano /var/www/web1/prohibido/index.html**
+
+Y escribimos lo siguiente:
+
+![Imagen38]()
+Ahora comprobamos la sintaxis y si esta correcta recargamos el servicio
+
+- **sudo nginx -t**
+
+- **sudo systemctl reload nginx**
+
+Ahora comprobaremos su funcionamiento buscando lo siguiente 
+
+
+
 # FIN
