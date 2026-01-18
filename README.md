@@ -376,13 +376,13 @@ Ahora comprobaremos su funcionamiento buscando lo siguiente en el navegador de c
 
  - **sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048**
 
-imagen
+  ![Imagen40](https://github.com/kokobonger/nginx/blob/main/Creacion%20parametro%20seguridad.png)
 
-Ahora entramos en el archivo de configuracion de web1 y ponemos lo siguiente
+Ahora entramos en el archivo de configuracion de web1 y ponemos lo siguiente, **Debe ser en el server que especifica el puerto 443**
 
 - **sudo nano /etc/nginx/sites-available/web1**
 
-imagen
+![Imagen41](https://github.com/kokobonger/nginx/blob/main/A%C3%B1adir%20configuracion%20TLS%20a%20web1.png)
 
    Recargamos el servicio:
    
@@ -390,14 +390,17 @@ imagen
 
 - **sudo systemctl reload nginx**
 
+![Imagen42](https://github.com/kokobonger/nginx/blob/main/Reinicio%20y%20estado%20nginx.png)
+
 Una vez reiniciamos el servicio comprobaremos si funciona la seguridad tls nueva o no, para ello ejecutaremos dos comandos, uno solicitara a la antigua configuracion de tls y otro a la nueva
 
-- **openssl s_client -connect www.web1.org:443** Nueva configuracion
+- **openssl s_client -connect www.web1.org:443** Nueva configuracion que se puede apreciar como pone la version TLSv1.3
 
-Imagen
+![Imagen43]()
+![Imagen44](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta.png)
 
-- **openssl s_client -tls1 -connect www.web1.org:443** Antigua configuracion
+- **openssl s_client -tls1 -connect www.web1.org:443** Antigua configuracion se puede apreciar que no nos muestra el certificado
 
-Imagen
+![Imagen45](https://github.com/kokobonger/nginx/blob/main/comprobacion%20de%20que%20el%20antiguo%20no%20va.png) 
 
 # FIN
