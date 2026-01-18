@@ -369,4 +369,35 @@ Ahora comprobaremos su funcionamiento buscando lo siguiente en el navegador de c
 
   ![Imagen40](https://github.com/kokobonger/nginx/blob/main/Error%20404.png)
 
+
+### Seguridad TLS
+
+ Empezaremos ejecutando este comando para generar un parametro de seguridad
+
+ - **sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048**
+
+imagen
+
+Ahora entramos en el archivo de configuracion de web1 y ponemos lo siguiente
+
+- **sudo nano /etc/nginx/sites-available/web1**
+
+imagen
+
+   Recargamos el servicio:
+   
+- **sudo nginx -t**
+
+- **sudo systemctl reload nginx**
+
+Una vez reiniciamos el servicio comprobaremos si funciona la seguridad tls nueva o no, para ello ejecutaremos dos comandos, uno solicitara a la antigua configuracion de tls y otro a la nueva
+
+- **openssl s_client -connect www.web1.org:443** Nueva configuracion
+
+Imagen
+
+- **openssl s_client -tls1 -connect www.web1.org:443** Antigua configuracion
+
+Imagen
+
 # FIN
