@@ -394,9 +394,10 @@ Ahora entramos en el archivo de configuracion de web1 y ponemos lo siguiente, **
 
 Una vez reiniciamos el servicio comprobaremos si funciona la seguridad tls nueva o no, para ello ejecutaremos dos comandos, uno solicitara a la antigua configuracion de tls y otro a la nueva
 
-- **openssl s_client -connect www.web1.org:443** Nueva configuracion que se puede apreciar como pone la version TLSv1.3
+- **openssl s_client -connect www.web1.org:443** Nueva configuracion que se puede apreciar como pone la version TLSv1.3 y que muestra el certificado creado
 
-![Imagen43]()
+![Imagen43](<img width="1192" height="1147" alt="image" src="https://github.com/user-attachments/assets/b831e8f6-be33-45ed-9628-c4c20d43f07a" />)
+
 ![Imagen44](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta.png)
 
 - **openssl s_client -tls1 -connect www.web1.org:443** Antigua configuracion se puede apreciar que no nos muestra el certificado
