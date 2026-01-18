@@ -396,7 +396,7 @@ Una vez reiniciamos el servicio comprobaremos si funciona la seguridad tls nueva
 
 - **openssl s_client -connect www.web1.org:443** Nueva configuracion que se puede apreciar como pone la version TLSv1.3 y que muestra el certificado creado
 
-![Imagen43](<img width="1192" height="1147" alt="image" src="https://github.com/user-attachments/assets/b831e8f6-be33-45ed-9628-c4c20d43f07a" />)
+![Imagen43](https://github.com/kokobonger/nginx/blob/main/muestra%20certificado%20.png)
 
 ![Imagen44](https://github.com/kokobonger/nginx/blob/main/comprobacion%20configuracion%20correcta.png)
 
