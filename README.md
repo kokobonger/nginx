@@ -404,4 +404,17 @@ Una vez reiniciamos el servicio comprobaremos si funciona la seguridad tls nueva
 
 ![Imagen45](https://github.com/kokobonger/nginx/blob/main/comprobacion%20de%20que%20el%20antiguo%20no%20va.png) 
 
+### Autenticacion de cliente
+
+A continuacion crearemos una autoridad certificadora propia para autenticar a un clientem para ello realizaremos lo siguiente:
+
+Crearemos un directorio
+
+- **sudo mkdir ~/ca**
+
+Nos situamos en esa carpeta
+
+-**cd ~/ca**
+
+
 # FIN
