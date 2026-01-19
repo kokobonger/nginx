@@ -416,5 +416,60 @@ Nos situamos en esa carpeta
 
 -**cd ~/ca**
 
+![Imagen46](https://github.com/kokobonger/nginx/blob/main/creacion%20de%20directorio.png)
 
+A continuacion generamos la clave y el certificado con los siguientes comandos:
+
+- **openssl genrsa -out ca.key 2048**
+
+![Imagen47](https://github.com/kokobonger/nginx/blob/main/creacion%20certificado%20ca1.png)
+
+- **openssl req -x509 -new -nodes -key ca.key -days 365 -out ca.crt**
+
+![Imagen48](https://github.com/kokobonger/nginx/blob/main/creacion%20certificado%20ca2.png)
+
+
+Una vez generado estos dos certificados, crearemos la clave y solicitud del cetificado del cliente, ejecutando estos comandos:
+
+- **openssl genrsa -out alumno1.key 2048**
+
+- **openssl req -new -key alumno1.key -out alumno1.csr**
+
+![Imagen49](https://github.com/kokobonger/nginx/blob/main/creacion%20certificado%20alumno.png)
+
+Ahora crearemos la firma del cliente con este comando: 
+
+- **openssl x509 -req -in alumno1.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out alumno1.crt -days 365**
+
+![Imagen50](https://github.com/kokobonger/nginx/blob/main/firma%20certificado%20de%20cliente%20con%20la%20autoridad%20certificadora.png)
+
+
+Una vez realizado con exito, copiaremos el certificado CA y lo meteremos en la carpeta ssl de nginx:
+
+- **sudo cp ca.crt /etc/nginx/ssl/ca.crt**
+
+![Imagen51](https://github.com/kokobonger/nginx/blob/main/copiar%20certificado%20a%20ssl.png)
+
+Ahora, en el archivo de la web1 añadiremos la ruta al certificado copiado anteriormente y un par de variables para que solicite el certificado y si no lo tiene activo, le envie a la pagina de error **403**:
+
+- **sudo nano /etc/nginx/sites-available/web1**
+
+Añadimos esto en el server que escucha por el puerto 443:
+
+![Imagen52](https://github.com/kokobonger/nginx/blob/main/configuracion%20a%C3%B1adida%20certificado.png)
+
+Guardamos y reiniciamos el servicio:
+
+- **sudo nginx -t**
+- **sudo systemctl reload nginx**
+
+![Imagen53](https://github.com/kokobonger/nginx/blob/main/configuracion%20correcta%20de%20autoridad%20certificadora.png)
+
+Ahora, desde el cliente intentaremos entrar sin el certificado:
+
+![Imagen54](https://github.com/kokobonger/nginx/blob/main/comprobacion%20desde%20cliente%20sin%20certificado.png)
+
+Luego añadiremos el certificado al cliente y comprobaremos que si le permite acceder a la web privada:
+
+![Imagen55]()
 # FIN
