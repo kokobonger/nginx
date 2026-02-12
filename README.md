@@ -32,7 +32,7 @@ Para instalarlo debemos realizar el siguiente procedimiento paso a paso:
 - **sudo apt install nginx -y**
 Una vez realizado estos dos comandos comprobaremos el estado y la version del servicio ejecutando los siguientes comandos:
 
-- **sduo systemctl status nginx**
+- **sudo systemctl status nginx**
 - **nginx -v**
 ![Imagen2](https://github.com/kokobonger/nginx/blob/main/Estado%20de%20servicio.png)
 
@@ -41,7 +41,8 @@ Comprobamos que existe la pagina por defecto de nginx
 - **ls /etc/nginx/sites-available**
   
 ![Imagen16](https://github.com/kokobonger/nginx/blob/main/comprobacion%20de%20instalacion%20correcta.png)
-Ahora procederemos a lacreacion de los directorios de ejemplo:
+
+Ahora procederemos a la creacion de los directorios de ejemplo:
 
 - **sudo mkdir -p /var/www/web1**
 - **sudo mkdir -p /var/www/web2**
@@ -469,7 +470,4 @@ Ahora, desde el cliente intentaremos entrar sin el certificado:
 
 ![Imagen54](https://github.com/kokobonger/nginx/blob/main/comprobacion%20desde%20cliente%20sin%20certificado.png)
 
-Luego añadiremos el certificado al cliente y comprobaremos que si le permite acceder a la web privada:
-
-![Imagen55]()
 # FIN
